@@ -1,6 +1,6 @@
 
 
-#  Recruitment Tracker — Excel Data Analytics Project
+#  Recruitment Tracker - Excel Data Analytics Project
 
 > An end-to-end recruitment performance tracker built in Microsoft Excel, designed to simulate real-world agency recruiting operations and demonstrate hands-on data analysis skills alongside 4 years of recruitment experience.
 
@@ -8,7 +8,7 @@
 
 ##  Project Overview
 
-This project replicates how a staffing agency or internal recruitment team might track requisitions, candidates, and recruiter activity — then transforms that raw operational data into meaningful performance insights through a structured data model, pivot analysis, and an interactive dashboard.
+This project replicates how a staffing agency or internal recruitment team might track requisitions, candidates, and recruiter activity - then transforms that raw operational data into meaningful performance insights through a structured data model, pivot analysis, and an interactive dashboard.
 
 Built entirely from scratch in Excel, this tracker covers the full recruitment lifecycle: from opening a job requisition to sourcing, screening, interviewing, and hiring.
 
@@ -18,7 +18,7 @@ Built entirely from scratch in Excel, this tracker covers the full recruitment l
 
 - Demonstrate data analysis skills applied to a recruitment domain
 - Build a structured, analysis-ready data model from raw activity logs
-- Track KPIs that matter in recruiting: time-to-hire, source effectiveness, funnel conversion
+- Track KPIs that matter in recruiting: time-to-hire, time-to-submit, source effectiveness, funnel conversion, hire rate, and recruiter performance
 - Showcase Excel proficiency (data modeling, COUNTIFS, IF, IFERROR, MINIFS, TEXT, AND, OR, pivot tables, dashboards)
 
 ---
