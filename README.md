@@ -31,7 +31,7 @@ recruitment-tracker-excel.xlsx
 ├── Raw_Data_Reqs           → Job requisitions (Req ID, Title, Client, Dates, Priority)
 ├── Raw_Data_Candidates     → Candidate pipeline (200 records across 10 reqs)
 ├── Raw_Data_Activities     → Recruiter activity log (478 activity events)
-├── Lookup_Tables           → Reference data (Recruiters, Stages, Sources)
+├── Lookup_Tables           → Reference data (Recruiters)
 │
 ├── Data_Model              → Cleaned, joined, flag-enriched analytical dataset
 ├── Pivot_Backend           → COUNTIFS-based pivot calculations (no pivot table dependency)
@@ -43,7 +43,7 @@ recruitment-tracker-excel.xlsx
 
 ##  Data Description
 
-### Raw Data — Requisitions (`Raw_Data_Reqs`)
+### Raw Data - Requisitions (`Raw_Data_Reqs`)
 | Column | Description |
 |---|---|
 | `Req_ID` | Unique requisition identifier (R001–R010) |
