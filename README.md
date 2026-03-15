@@ -165,7 +165,7 @@ The `Dashboard` sheet provides a high-level summary of recruitment performance i
 
 ### Dashboard Preview
 
-![Recruitment Dashboard](screenshots1/dashboard1.png)
+![Recruitment Dashboard](screenshots/dashboard.png)
 
 ##  Excel Skills Demonstrated
 
