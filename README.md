@@ -2,7 +2,7 @@
 
 #  Recruitment Tracker - Excel Data Analytics Project
 
-> An end-to-end recruitment performance tracker built in Microsoft Excel, designed to simulate real-world agency recruiting operations and demonstrate hands-on data analysis skills alongside 4 years of recruitment experience.
+> An end-to-end recruitment performance tracker built in Microsoft Excel, designed to simulate real-world agency recruiting operations and demonstrate analytical thinking applied to a domain backed by 4 years of recruitment experience.
 
 ---
 
@@ -10,7 +10,7 @@
 
 This project replicates how a staffing agency or internal recruitment team might track requisitions, candidates, and recruiter activity - then transforms that raw operational data into meaningful performance insights through a structured data model, pivot analysis, and an interactive dashboard.
 
-Built entirely from scratch in Excel, this tracker covers the full recruitment lifecycle: from opening a job requisition to sourcing, screening, interviewing, and hiring.
+Built entirely in Microsoft Excel from scratch, this tracker covers the full recruitment lifecycle: from opening a job requisition to sourcing, screening, interviewing, and hiring.
 
 ---
 
@@ -46,17 +46,17 @@ recruitment-tracker-excel.xlsx
 ### Raw Data - Requisitions (`Raw_Data_Reqs`)
 | Column | Description |
 |---|---|
-| `Req_ID` | Unique requisition identifier (R001–R010) |
+| `Req_ID` | Unique requisition identifier (R001-R010) |
 | `Job_Title` | Role being hired (Business Analyst, Data Analyst, Data Engineer) |
 | `Client` | Hiring company (Amazon, Microsoft, Google) |
 | `Open_Date` | Date requisition was opened |
 | `Close_Date` | Date requisition was closed/filled |
 | `Priority` | Business priority (High / Medium / Low) |
 
-### Raw Data — Candidates (`Raw_Data_Candidates`)
+### Raw Data - Candidates (`Raw_Data_Candidates`)
 | Column | Description |
 |---|---|
-| `Candidate_ID` | Unique candidate identifier (C0001–C0200) |
+| `Candidate_ID` | Unique candidate identifier (C0001-C0200) |
 | `Req_ID` | Linked requisition |
 | `Recruiter` | Assigned recruiter (Harish, Anita, Sneha, Rahul) |
 | `Source` | Sourcing channel (LinkedIn, Indeed, Monster, CareerBuilder, ZipRecruiter) |
@@ -65,10 +65,10 @@ recruitment-tracker-excel.xlsx
 | `Years_Exp` | Candidate's years of experience |
 | `Location` | Candidate location |
 
-### Raw Data — Activities (`Raw_Data_Activities`)
+### Raw Data - Activities (`Raw_Data_Activities`)
 | Column | Description |
 |---|---|
-| `Activity_ID` | Unique activity identifier |
+| `Activity_ID` | Unique activity identifier. Retained to maintain event-level traceability and prevent double counting when analyzing recruiter activity logs. |
 | `Candidate_ID` | Linked candidate |
 | `Recruiter` | Recruiter who performed the activity |
 | `Activity_Type` | Type of activity (Resume Submitted, Screen Completed, Hired, etc.) |
@@ -88,10 +88,29 @@ The `Data_Model` sheet is the analytical core of this project. It joins candidat
 | `Submission_Flag` | 1 if Submission_Date is not blank, else 0 |
 | `Interview_Flag` | 1 if Interview_Date is not blank, else 0 |
 | `Hire_Flag` | 1 if Hire_Date is not blank, else 0|
-| `Days_To_Submit` | Resume_Date → Submission_Date (skipped if dates missing or illogical) |
+| `Days_To_Submit` | Resume_Date → Submission_Date (skipped if dates are missing or illogical) |
 | `Time_to_Interview` | Submission_Date → Interview_Date (skipped if dates missing or illogical) |
 | `Time_to_Hire` | Submission_Date → Hire_Date (skipped if dates missing or illogical) |
 | `Invalid_Hire_Flag` | AND logic — flags records where Hire_Date is before Submission_Date |
+
+---
+
+## Data Quality Checks
+
+ATS exports often contain inconsistencies due to manual recruiter actions and non-linear hiring workflows.  
+To ensure reliable analysis, several validation rules were implemented in the data model:
+
+- **Invalid Hire Detection**  
+  `Invalid_Hire_Flag` identifies records where the hire date occurs before the submission date.
+
+- **Missing Activity Handling**  
+  If expected activities are missing (e.g., no interview logged), derived stage dates remain NULL to avoid incorrect assumptions.
+
+- **Duplicate Activity Protection**  
+  Activity logs can contain repeated entries.  
+  Earliest-event logic using `MINIFS` ensures each candidate's stage is captured only once.
+
+These checks help maintain analytical integrity and reflect common real-world data challenges in ATS systems.
 
 ---
 
@@ -105,10 +124,12 @@ The `Data_Model` sheet is the analytical core of this project. It joins candidat
 | Avg. Days to Submit | ~12 days |
 | Avg. Time to Hire | ~4 days (post-submission) |
 
+> Note: Metrics are based on a synthetic dataset generated for demonstration purposes and are intended to showcase analytical workflows rather than represent real-world recruiting benchmarks.
+
 ### Hiring Funnel
 ```
-Sourced → Screened → Interview → Offer → Hired
-  200       ~171       ~105       ~28      93
+Candidates → Submitted → Interviewed → Hired
+  200       ~101          ~97          93
 ```
 
 ### Recruiter Performance
@@ -142,23 +163,27 @@ The `Dashboard` sheet provides a high-level summary of recruitment performance i
 
 ---
 
+### Dashboard Preview
+
+![Recruitment Dashboard](screenshots/dashboard.png)
+
 ##  Excel Skills Demonstrated
 
-- **Data Modeling** — joining multiple raw tables into a single analytical layer
-- **MINIFS** — extracting earliest activity dates from a log by matching Candidate ID and Activity Type
-- **COUNTIFS** — building pivot-style aggregations without pivot table limitations
-- **Flag Engineering** — creating binary indicators for funnel analysis
-- **Date Arithmetic** — calculating time-to-hire, days-to-submit, and processing speed
-- **Data Validation** — dropdown controls using lookup tables
-- **Pivot Tables & Charts** — visual summaries of recruiter and source performance
-- **Dashboard Design** — clean KPI layout with structured layout and named ranges
-- **Data Quality Checks** — `Invalid_Hire_Flag` to catch logical inconsistencies in data
+- **Data Modeling** - joining multiple raw tables into a single analytical layer
+- **MINIFS** - extracting earliest activity dates from a log by matching Candidate ID and Activity Type
+- **COUNTIFS** - building pivot-style aggregations without pivot table limitations
+- **Flag Engineering** - creating binary indicators for funnel analysis
+- **Date Arithmetic** - calculating time-to-hire, days-to-submit, and processing speed
+- **Data Validation** - dropdown controls using lookup tables
+- **Pivot Tables & Charts** - visual summaries of recruiter and source performance
+- **Dashboard Design** - KPI dashboard design using structured layout and merged metric cards
+- **Data Quality Checks** - `Invalid_Hire_Flag` to catch logical inconsistencies in data
 
 ---
 
 ##  Why This Project
 
-With 4 years of hands-on recruitment experience, I understand the data that gets generated in a hiring workflow — but it often goes unanalyzed. This project bridges that gap by applying data analysis thinking to a domain I know deeply.
+With 4 years of hands-on recruitment experience, I understand the data that gets generated in a hiring workflow - but it often goes unanalyzed. This project bridges that gap by applying data analysis thinking to a domain I know deeply.
 
 The goal was to go beyond just tracking candidates in a spreadsheet, and instead build something that answers real questions a recruiting team or hiring manager would ask:
 
@@ -172,13 +197,23 @@ The goal was to go beyond just tracking candidates in a spreadsheet, and instead
 ##  How to Use
 
 1. Download `Recruitment_Tracker_From_Scratch.xlsx`
-2. Enable editing and macros if prompted
-3. Start with the `Raw_Data_*` sheets to understand the source data
-4. Review `Data_Model` to see how the data is joined and enriched
-5. Explore `Pivot_Backend` and `Pivot_Charts` for the aggregation logic
-6. Open `Dashboard` for the final summary view
+2. Start with the `Raw_Data_*` sheets to understand the source data
+3. Review `Data_Model` to see how the data is joined and enriched
+4. Explore `Pivot_Backend` and `Pivot_Charts` for the aggregation logic
+5. Open `Dashboard` for the final summary view
 
-The `Recruitment_Tracker_From_Scratch_-_Raw_Untouched.xlsx` file contains only the raw input sheets with no transformations applied — useful for understanding the starting point of the project.
+The `Recruitment_Tracker_From_Scratch_-_Raw_Untouched.xlsx` file contains only the raw input sheets with no transformations applied - useful for understanding the starting point of the project.
+
+---
+
+## Design Principles
+
+This project follows a layered analytical structure commonly used in BI workflows:
+
+1. **Raw Data Layer** – Unmodified ATS-style exports  
+2. **Data Model Layer** – Cleaned and enriched dataset with derived metrics  
+3. **Aggregation Layer** – COUNTIFS-based summary tables for reporting  
+4. **Presentation Layer** – Dashboard visualizing recruitment KPIs
 
 ---
 
@@ -191,11 +226,5 @@ The `Recruitment_Tracker_From_Scratch_-_Raw_Untouched.xlsx` file contains only t
 
 ---
 
-##  About
-
-Built by a recruiter with 4 years of experience in staffing and talent acquisition, expanding into data analytics to bring deeper insight into hiring operations.
-
-
----
 
 *This is a personal portfolio project. All candidate and company data is entirely synthetic and generated for demonstration purposes.*
