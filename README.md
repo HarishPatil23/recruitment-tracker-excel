@@ -19,7 +19,7 @@ Built entirely in Microsoft Excel from scratch, this tracker covers the full rec
 - Demonstrate data analysis skills applied to a recruitment domain
 - Build a structured, analysis-ready data model from raw activity logs
 - Track KPIs that matter in recruiting: time-to-hire, time-to-submit, source effectiveness, funnel conversion, hire rate, and recruiter performance
-- Showcase Excel proficiency (data modeling, COUNTIFS, IF, IFERROR, MINIFS, TEXT, AND, OR, pivot tables, dashboards)
+- Showcase Excel proficiency (data modeling, COUNTIFS, IF, IFERROR, MINIFS, AND, OR, pivot tables, dashboards)
 
 ---
 
@@ -220,7 +220,7 @@ This project follows a layered analytical structure commonly used in BI workflow
 ##  Tools Used
 
 - Microsoft Excel (primary tool)
-- Formulas: MINIFS, COUNTIFS, IF, IFERROR, AND, OR, TEXT
+- Formulas: MINIFS, COUNTIFS, IF, IFERROR, AND, OR
 - Pivot Tables, Slicers
 - Named Ranges, Data Validation
 
